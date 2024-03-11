@@ -35,7 +35,7 @@ def nova_imagem(request):
         return redirect('login')
     form = FotografiaForm
     if request.method == 'POST':
-        form = FotografiaForm(request.POST)
+        form = FotografiaForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, 'Fotografia cadastrada com sucesso!')
