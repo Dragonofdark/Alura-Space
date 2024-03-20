@@ -13,6 +13,8 @@ def index(request):
 
 def imagem(request, foto_id):
     fotografia = get_object_or_404(Fotografia, pk=foto_id)
+    fotografia.mais_vistas += 1
+    fotografia.save()
     return render(request, 'galeria/imagem.html', {'fotografia': fotografia})
 
 def buscar(request):
@@ -65,3 +67,7 @@ def deletar_imagem(request, foto_id):
 def filtro(request, categoria):
      fotografias = Fotografia.objects.order_by('data_fotografia').filter(publicada=True, categoria=categoria)
      return render(request, 'galeria/index.html', {'cards': fotografias})
+
+def mais_vistas(request):
+    mais_vista = Fotografia.objects.order_by('-mais_vistas')[:10] 
+    return render(request, 'galeria/mais_vistas.html', {'mais_vistas': mais_vista})

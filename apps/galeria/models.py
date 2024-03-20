@@ -24,6 +24,7 @@ class Fotografia(models.Model):
         blank=False,
         related_name='user'
     )
+    mais_vistas = models.IntegerField(default=0)
 
     def __str__(self):
         return self.nome
