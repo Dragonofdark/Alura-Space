@@ -14,6 +14,7 @@ def index(request):
 def imagem(request, foto_id):
     fotografia = get_object_or_404(Fotografia, pk=foto_id)
     fotografia.mais_vistas += 1
+    fotografia.mais_curtidas += 1
     fotografia.save()
     return render(request, 'galeria/imagem.html', {'fotografia': fotografia})
 
@@ -71,3 +72,8 @@ def filtro(request, categoria):
 def mais_vistas(request):
     mais_vista = Fotografia.objects.order_by('-mais_vistas')[:10] 
     return render(request, 'galeria/mais_vistas.html', {'mais_vistas': mais_vista})
+
+def mais_curtidas(request):
+    mais_curtida = Fotografia.objects.order_by('-mais_curtidas')[:10]
+    return render(request, 'galeria/mais_curtidas.html', {'mais_curtidas': mais_curtida})
+    
