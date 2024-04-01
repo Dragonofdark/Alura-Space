@@ -209,7 +209,7 @@ table {
 }
 
 .imagem__imagem {
-    width: 450px !important;
+    width: 450px;
     border-radius: 20px;
 }
 

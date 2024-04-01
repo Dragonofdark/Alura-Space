@@ -209,7 +209,7 @@ table {
 }
 
 .imagem__imagem {
-    width: 450px !important;
+    width: 450px;
     border-radius: 20px;
 }
 
@@ -334,12 +334,13 @@ table {
 
 .rodape {
     background-color: #04244F;
-    width: 100%;
+    width: 450px;
     padding: 1.5rem 3rem;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     color: #FFFFFF;
+    clear: both
 }
 
 .rodape__icones {

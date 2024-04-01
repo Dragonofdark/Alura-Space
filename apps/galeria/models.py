@@ -26,6 +26,7 @@ class Fotografia(models.Model):
     )
     mais_vistas = models.IntegerField(default=0)
     mais_curtidas = models.IntegerField(default=0)
+    surpreenda_me = models.URLField(default='https://picsum.photos/200/300', null=True, blank=True)
 
     def __str__(self):
         return self.nome

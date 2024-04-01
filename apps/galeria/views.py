@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from apps.galeria.models import Fotografia
 from django.contrib import messages
 from apps.galeria.forms import FotografiaForm
+import random
+from django.shortcuts import render
 
 def index(request):
     if not request.user.is_authenticated:
@@ -76,4 +78,9 @@ def mais_vistas(request):
 def mais_curtidas(request):
     mais_curtida = Fotografia.objects.order_by('-mais_curtidas')[:10]
     return render(request, 'galeria/mais_curtidas.html', {'mais_curtidas': mais_curtida})
+
+def surpreenda_me(request):
+    imagens = Fotografia.objects.all()
+    imagem_aleatoria = random.choice(imagens)
+    return render(request, 'galeria/surpreenda_me.html', {'imagem': imagem_aleatoria})
     
