@@ -1,0 +1,18 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+    <section class="conteudo">
+        {% if favoritas %}
+            <div class="favoritas">
+                {% for favorita in favoritas %}
+                    <div class="imagem">
+                        <img src="{{ favorita.imagem.url }}" alt="{{ favorita.imagem.descricao }}">
+                        <p>{{ favorita.imagem.descricao }}</p>
+                        <button class="toggle-favorita" data-foto-id="{{ favorita.id }}">Adicionar/Remover Favorita</button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <img class="imagem__imagem" src="{% static 'assets/imagens/galeria/not-found.png' %}">
+        {% endif %}
+    </section>

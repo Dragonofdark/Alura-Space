@@ -27,6 +27,13 @@ class Fotografia(models.Model):
     mais_vistas = models.IntegerField(default=0)
     mais_curtidas = models.IntegerField(default=0)
     surpreenda_me = models.URLField(default='https://picsum.photos/200/300', null=True, blank=True)
+    favoritas = models.ManyToManyField(User, related_name='favoritas', blank=True)
 
     def __str__(self):
         return self.nome
+    
+    def toggle_favorita(self, user):
+        if user in self.favoritas.all():
+            self.favoritas.remove(user)
+        else:
+            self.favoritas.add(user)

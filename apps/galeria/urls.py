@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.galeria.views import index, imagem, buscar, nova_imagem, editar_imagem, deletar_imagem, filtro, mais_vistas, mais_curtidas,surpreenda_me 
+from apps.galeria.views import index, imagem, buscar, nova_imagem, editar_imagem, deletar_imagem, filtro, mais_vistas, mais_curtidas,surpreenda_me,toggle_favorita
 
 urlpatterns = [
     path('', index, name='index'),
@@ -12,4 +12,5 @@ urlpatterns = [
     path('mais-vistas', mais_vistas, name='mais_vistas'),
     path('mais-curtidas', mais_curtidas, name='mais_curtidas'),
     path('surpreenda-me', surpreenda_me, name='surpreenda_me'),
+    path('favoritas', toggle_favorita, name='favoritas'),
 ]

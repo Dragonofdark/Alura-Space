@@ -4,6 +4,8 @@ from django.contrib import messages
 from apps.galeria.forms import FotografiaForm
 import random
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 
 def index(request):
     if not request.user.is_authenticated:
@@ -83,4 +85,9 @@ def surpreenda_me(request):
     imagens = Fotografia.objects.all()
     imagem_aleatoria = random.choice(imagens)
     return render(request, 'galeria/surpreenda_me.html', {'imagem': imagem_aleatoria})
-    
+
+@login_required
+def toggle_favorita(request, foto_id):
+    fotografia = Fotografia.objects.get(id=foto_id)
+    fotografia.toggle_favorita(request.user)
+    return JsonResponse({'status': 'success'})
