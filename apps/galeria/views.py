@@ -85,16 +85,12 @@ def surpreenda_me(request):
     imagem_aleatoria = random.choice(imagens)
     return render(request, 'galeria/surpreenda_me.html', {'imagem': imagem_aleatoria})
 
-@login_required
-def adicionar_favorita(request, foto_id):
-    fotografia = get_object_or_404(Fotografia, id=foto_id)
-    request.user.fotos_favoritas.add(fotografia)
-    messages.success(request, 'Imagem adicionada à lista de favoritas com sucesso!')
-    return redirect('index')
+def toggle_favoritas(request, foto_id):
+    imagem = Fotografia.objects.get(pk=foto_id)
+    imagem.favorita = not imagem.favorita
+    imagem.save()
+    return redirect(request.META.get('HTTP_REFERER'))
 
-@login_required
-def remover_favorita(request, foto_id):
-    fotografia = get_object_or_404(Fotografia, id=foto_id)
-    request.user.fotos_favoritas.remove(fotografia)
-    messages.success(request, 'Imagem removida da lista de favoritas com sucesso!')
-    return redirect('index')
+def favoritas(request):
+    imagens_favoritas = Fotografia.objects.filter(favoritas=True)
+    return render(request, 'galeria/favoritas.html', {'imagens': imagens_favoritas})

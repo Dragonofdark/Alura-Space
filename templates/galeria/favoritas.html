@@ -1,19 +1,21 @@
 {% extends 'shared/base.html' %}
 {% load static %}
 {% block content %}
-<div class="favoritas">
-    <h2>Imagens Favoritas</h2>
-    <div class="grid">
-        {% for foto in request.user.fotos_favoritas.all %}
-        <div class="card">
-            <img src="{{ foto.foto.url }}" alt="{{ foto.nome }}">
-            <div class="card-info">
-                <h3>{{ foto.nome }}</h3>
-                <p>{{ foto.legenda }}</p>
-                <a href="{% url 'remover_favorita' foto.id %}">Remover das Favoritas</a>
+<section class="conteudo">
+    {% for fotografia in favoritas %}
+        <section class="imagem">
+            <div class="imagem__conteudo">
+                <img class="imagem__imagem" src="{{ fotografia.foto.url }}">
+                <div class="imagem__info">
+                    <div class="imagem__texto">
+                        <p class="imagem__titulo">{{ fotografia.nome }}</p>
+                        <p class="imagem__curtidas">{{ fotografia.favoritas }}</p> 
+                    </div>
+                </div>
             </div>
-        </div>
-        {% endfor %}
-    </div>
-</div>
+        </section>
+    {% empty %}
+        <img class="imagem__imagem" src="{% static 'assets/imagens/galeria/not-found.png' %}">
+    {% endfor %}
+</section>
 {% endblock %}

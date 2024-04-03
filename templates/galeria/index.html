@@ -34,9 +34,11 @@
                                     <p class="card__titulo">{{ fotografia.nome }}</p>
                                     <div class="card__texto">
                                         <p class="card__descricao">{{ fotografia.legenda }}</p>
-                                        <button class="favoritar" data-imagem="{{ imagem.url }}" data-descricao="{{ imagem.descricao }}">
-                                            <img src="{% static 'assets/ícones/1x/favorite_outline.png' %}" alt="ícone de coração">
-                                        </button>
+                                        {% if imagem.favorita %}
+                                            <span class="favorita">❤️</span>
+                                        {% else %}
+                                            <span class="nao-favorita">🤍</span>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </li>
