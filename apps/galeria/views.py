@@ -87,10 +87,10 @@ def surpreenda_me(request):
 
 def toggle_favoritas(request, foto_id):
     imagem = Fotografia.objects.get(pk=foto_id)
-    imagem.favorita = not imagem.favorita
+    imagem.favoritas = not imagem.favoritas
     imagem.save()
     return redirect(request.META.get('HTTP_REFERER'))
 
 def favoritas(request):
     imagens_favoritas = Fotografia.objects.filter(favoritas=True)
-    return render(request, 'galeria/favoritas.html', {'imagens': imagens_favoritas})
+    return render(request, 'galeria/favoritas.html', {'imagens_favoritas': imagens_favoritas})

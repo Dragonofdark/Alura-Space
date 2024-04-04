@@ -34,11 +34,17 @@
                                     <p class="card__titulo">{{ fotografia.nome }}</p>
                                     <div class="card__texto">
                                         <p class="card__descricao">{{ fotografia.legenda }}</p>
-                                        {% if imagem.favorita %}
-                                            <span class="favorita">❤️</span>
-                                        {% else %}
-                                            <span class="nao-favorita">🤍</span>
-                                        {% endif %}
+                                        {% if fotografia.favorita %}
+                                        <form action="{% url 'toggle_favoritas' fotografia.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn-favoritar favorita">❤️</button>
+                                        </form>
+                                    {% else %}
+                                        <form action="{% url 'toggle_favoritas' fotografia.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn-favoritar nao-favorita">🤍</button>
+                                        </form>
+                                    {% endif %}
                                     </div>
                                 </div>
                             </li>

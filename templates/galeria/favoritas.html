@@ -2,14 +2,19 @@
 {% load static %}
 {% block content %}
 <section class="conteudo">
-    {% for fotografia in favoritas %}
+    {% for fotografia in imagens_favoritas %}
         <section class="imagem">
             <div class="imagem__conteudo">
                 <img class="imagem__imagem" src="{{ fotografia.foto.url }}">
                 <div class="imagem__info">
                     <div class="imagem__texto">
                         <p class="imagem__titulo">{{ fotografia.nome }}</p>
-                        <p class="imagem__curtidas">{{ fotografia.favoritas }}</p> 
+                        <form action="{% url 'toggle_favoritas' fotografia.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-favoritar {% if fotografia.favorita %}favorita{% else %}nao-favorita{% endif %}">
+                                {% if fotografia.favorita %}❤️{% else %}🤍{% endif %}
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

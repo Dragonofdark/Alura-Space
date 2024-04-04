@@ -12,6 +12,6 @@ urlpatterns = [
     path('mais-vistas', mais_vistas, name='mais_vistas'),
     path('mais-curtidas', mais_curtidas, name='mais_curtidas'),
     path('surpreenda-me', surpreenda_me, name='surpreenda_me'),
-    path('toggle_favoritas', toggle_favoritas, name='toggle_favoritas'),
+    path('toggle_favoritas/<int:foto_id>/', toggle_favoritas, name='toggle_favoritas'),
     path('favoritas', favoritas, name='favoritas'),
 ]
