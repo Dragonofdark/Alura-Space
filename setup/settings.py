@@ -176,7 +176,3 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
     messages.SUCCESS: 'success',
     }
-
-# boto3 Atualização de CSS
-s3 = boto3.client('s3')
-s3.upload_file('static/styles/style.css', 'fotografias-lura-space', 'static/styles/style.css')
