@@ -31,8 +31,7 @@ O projeto se trata de um site na qual é possivel visualizar imagens do espaço,
 
 * Python
 * Django
-* Django-RestFramework
-  
+
 <h2>Pessoas Desenvolvedoras do Projeto</h2>
 <img loading="lazy" src="https://avatars.githubusercontent.com/u/116024259?s=400&u=595e434d2dcd8362ddc1e6737ad52f5acf74c758&v=4" width=115><br><sub>João Pedro Santos da Silva</sub>
 
